@@ -1,0 +1,19 @@
+version: '2'
+services:
+  redis:
+    image: redis:3.0.7
+  symfony:
+    build: .
+    volumes:
+      - ./src:/var/www
+      # Still getting cache and logs permission errors for shared volumes
+      #- ./logs:/var/log/apache2
+      #- ./cache:/tmp/cache
+    ports:
+      - "8000:80"
+    depends_on:
+      - redis
+    links:
+      - redis
+    env_file:
+      - ./config/env/dev.env
