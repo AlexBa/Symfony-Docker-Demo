@@ -2,7 +2,6 @@
 /build/
 /phpunit.xml
 composer.phar
-
 /var/*
 !/var/cache
 /var/cache/*
